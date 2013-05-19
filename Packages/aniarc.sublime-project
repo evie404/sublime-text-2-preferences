@@ -1,0 +1,26 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/rpai/aniarc.com"
+		},
+		{
+			"path": "/Users/rpai/aniarc.com/ci/application"
+		},
+		{
+			"path": "/Users/rpai/aniarc.com/includes"
+		},
+		{
+			"path": "/Users/rpai/aniarc.com/ci/application/controllers"
+		},
+		{
+			"path": "/Users/rpai/aniarc.com/ci/application/models"
+		},
+		{
+			"path": "/Users/rpai/aniarc.com/ci/application/views"
+		},
+		{
+			"path": "/Users/rpai/news.aniarc.com"
+		}
+	]
+}
