@@ -3,8 +3,8 @@
 	"installed_packages":
 	[
 		"Alignment",
-		"Coffeescript",
 		"CoffeeScript",
+		"Coffeescript",
 		"DetectSyntax",
 		"Gist",
 		"GitGutter",
