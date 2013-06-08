@@ -3,10 +3,9 @@
 	"installed_packages":
 	[
 		"Alignment",
-		"CoffeeScript",
 		"Coffeescript",
+		"CoffeeScript",
 		"DetectSyntax",
-		"Gist",
 		"GitGutter",
 		"Hayaku - tools for writing CSS faster",
 		"LESS",
