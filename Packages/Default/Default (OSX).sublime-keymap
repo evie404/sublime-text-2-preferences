@@ -13,7 +13,6 @@ and don't need to be repeated here. Anything listed here will take precedence, h
 	{ "keys": ["super+shift+s"], "command": "prompt_save_as" },
 	{ "keys": ["super+alt+s"], "command": "save_all" },
 	{ "keys": ["super+w"], "command": "close" },
-	
 
 	{ "keys": ["super+k", "super+b"], "command": "toggle_side_bar" },
 	{ "keys": ["super+ctrl+f"], "command": "toggle_full_screen" },
