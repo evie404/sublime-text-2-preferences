@@ -1,7 +1,7 @@
 {
 	"color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
-	"font_face": "droid sans mono",
-	"font_size": 12.0,
+	"font_face": "sans",
+	"font_size": 13.0,
 	"ignored_packages":
 	[
 		"ASP",
