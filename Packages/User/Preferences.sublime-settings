@@ -1,7 +1,7 @@
 {
 	"color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
-	"font_face": "sans",
-	"font_size": 13.0,
+	"font_face": "helvetica light",
+	"font_size":  13.0,
 	"ignored_packages":
 	[
 		"ASP",
