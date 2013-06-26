@@ -4,25 +4,7 @@
 	"font_size":  13.0,
 	"ignored_packages":
 	[
-		"ASP",
-		"C#",
-		"Vintage",
-		"C++",
-		".DS_Store",
-		"ActionScript",
-		"Clojure",
-		"D",
-		"Go",
-		"Haskell",
-		"Java",
-		"LaTeX",
-		"Scala",
-		"TCL",
-		"Lisp",
-		"Lua",
-		"R",
-		"Python",
-		"Tag"
+        "Vintage"
 	],
 	"trim_trailing_white_space_on_save": true
 }
