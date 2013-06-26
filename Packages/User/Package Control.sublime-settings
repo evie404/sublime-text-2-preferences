@@ -3,8 +3,8 @@
 	"installed_packages":
 	[
 		"Alignment",
-		"CoffeeScript",
 		"Coffeescript",
+		"CoffeeScript",
 		"DetectSyntax",
 		"GitGutter",
 		"Hayaku - tools for writing CSS faster",
@@ -14,6 +14,7 @@
 		"RubyTest",
 		"Sass",
 		"SCSS",
+		"SublimeLinter",
 		"Tag",
 		"TrailingSpaces"
 	]
