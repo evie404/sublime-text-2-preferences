@@ -228,6 +228,10 @@
     // inserting tabs.
     "shift_tab_unindent": false,
 
+    // If true, the copy and cut commands will operate on the current line
+    // when the selection is empty, rather than doing nothing.
+    "copy_with_empty_selection": true,
+
     // If true, the selected text will be copied into the find panel when it's
     // shown.
     // On OS X, this value is overridden in the platform specific settings, so
@@ -263,6 +267,13 @@
     // OS X 10.7 only: Set to true to disable Lion style full screen support.
     // Sublime Text must be restarted for this to take effect.
     "use_simple_full_screen": false,
+
+    // OS X only. Valid values are true, false, and "auto". Auto will enable
+    // the setting when running on a screen 2880 pixels or wider (i.e., a
+    // Retina display). When this setting is enabled, OpenGL is used to
+    // accelerate drawing. Sublime Text must be restarted for changes to take
+    // effect.
+    "gpu_window_buffer": "auto",
 
     // Valid values are "system", "enabled" and "disabled"
     "overlay_scroll_bars": "system",
@@ -313,8 +324,8 @@
     // folder_exclude_patterns and file_exclude_patterns control which files
     // are listed in folders on the side bar. These can also be set on a per-
     // project basis.
-    "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "tmp"],
-    "file_exclude_patterns": ["*.css%3F", "*.cssc","*.scssc",".erbc","*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db"],
+    "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS"],
+    "file_exclude_patterns": ["*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db"],
     // These files will still show up in the side bar, but won't be included in
     // Goto Anything or Find in Files
     "binary_file_patterns": ["*.jpg", "*.jpeg", "*.png", "*.gif", "*.ttf", "*.tga", "*.dds", "*.ico", "*.eot", "*.pdf", "*.swf", "*.jar", "*.zip"],
