@@ -5,7 +5,7 @@
   // { "keys": ["super+shift+n"], "command": "quick_create_directory" }
 
   { "keys": ["super+v"], "command": "paste_and_indent" },
-  { "keys": ["super+shift+v"], "command": "paste" },
+  { "keys": ["super+shift+v"], "command": "paste" }
 
-  { "keys": ["super+shift+t"], "command": "open_recent_file", "args": {"index" : 0} } //doesnt work for more than one recently closed files
+  // { "keys": ["super+shift+t"], "command": "open_recent_file", "args": {"index" : 0} } //doesnt work for more than one recently closed files
 ]
