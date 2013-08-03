@@ -25,7 +25,8 @@
 		".DS_Store",
 		"*.class",
 		"*.psd",
-		"*.db"
+		"*.db",
+		"*.jar"
 	],
 	"folder_exclude_patterns":
 	[
