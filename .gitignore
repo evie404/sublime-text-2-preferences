@@ -5,3 +5,4 @@ Backup/*
 *.cache
 Packages/User/RubyTest.last-run
 Packages/User/Package Control.last-run
+Packages/Package Control/certs/*
