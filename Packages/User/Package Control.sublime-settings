@@ -4,8 +4,8 @@
 	[
 		"Alignment",
 		"All Autocomplete",
-		"Coffeescript",
 		"CoffeeScript",
+		"Coffeescript",
 		"DetectSyntax",
 		"GitGutter",
 		"Hayaku - tools for writing CSS faster",
@@ -19,6 +19,7 @@
 		"SCSS",
 		"SublimeLinter",
 		"Tag",
+		"Theme - Soda",
 		"TrailingSpaces"
 	]
 }
