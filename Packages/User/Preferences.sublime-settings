@@ -26,7 +26,8 @@
 		"*.class",
 		"*.psd",
 		"*.db",
-		"*.jar"
+		"*.jar",
+		"*.keep"
 	],
 	"folder_exclude_patterns":
 	[
