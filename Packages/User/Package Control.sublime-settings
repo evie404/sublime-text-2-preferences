@@ -4,8 +4,8 @@
 	[
 		"Alignment",
 		"All Autocomplete",
-		"Coffeescript",
 		"CoffeeScript",
+		"Coffeescript",
 		"DetectSyntax",
 		"GitGutter",
 		"Hayaku - tools for writing CSS faster",

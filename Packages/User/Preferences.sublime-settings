@@ -27,7 +27,8 @@
 		"*.psd",
 		"*.db",
 		"*.jar",
-		"*.keep"
+		"*.keep",
+		"*.gitkeep"
 	],
 	"folder_exclude_patterns":
 	[
