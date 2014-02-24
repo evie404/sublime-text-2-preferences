@@ -8,7 +8,19 @@
   { "keys": ["super+shift+v"], "command": "paste" },
 
   { "keys": ["super+shift+h"], "command": "hash_syntax" },
+  { "keys": ["super+shift+x"], "command": "expand_selection_to_quotes" },
   { "keys": ["super+shift+c"], "command": "toggle_symbol" }
+
+  // {
+  //   "keys": ["super+shift+c"],
+  //   "command": "run_multiple",
+  //   "args": {
+  //     "commands": [
+  //       {"command": "expand_selection_to_quotes", "args": null, "context": "window"},
+  //       {"command": "toggle_symbol", "args": null, "context": "window"}
+  //     ]
+  //   }
+  // }
 
 
   // { "keys": ["super+shift+t"], "command": "open_recent_file", "args": {"index" : 0} } //doesnt work for more than one recently closed files
