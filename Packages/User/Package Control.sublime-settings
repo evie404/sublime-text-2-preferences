@@ -4,8 +4,8 @@
 	[
 		"Alignment",
 		"All Autocomplete",
-		"CoffeeScript",
 		"Coffeescript",
+		"CoffeeScript",
 		"DetectSyntax",
 		"GitGutter",
 		"Hayaku - tools for writing CSS faster",
@@ -15,12 +15,14 @@
 		"nginx",
 		"Package Control",
 		"Rails Related Files",
+		"Ruby 1.9 Hash Converter",
 		"RubyTest",
 		"Sass",
 		"SCSS",
 		"SublimeLinter",
 		"Tag",
 		"Theme - Soda",
+		"Toggle Symbol to String",
 		"TrailingSpaces"
 	]
 }
