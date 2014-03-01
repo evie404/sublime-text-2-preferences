@@ -43,7 +43,8 @@
 	"ignored_packages":
 	[
 		"Vintage",
-		"RubyTest"
+		"RubyTest",
+		"SublimeLinter"
 	],
 	"tab_size": 2,
 	"theme": "Soda Dark.sublime-theme",
