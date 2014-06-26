@@ -28,7 +28,11 @@
 		"*.db",
 		"*.jar",
 		"*.keep",
-		"*.gitkeep"
+		"*.gitkeep",
+		"*.png",
+		"*.ico",
+		"*.jpg",
+		"*.gif"
 	],
 	"folder_exclude_patterns":
 	[
