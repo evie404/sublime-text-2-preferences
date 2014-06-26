@@ -32,7 +32,10 @@
 		"*.png",
 		"*.ico",
 		"*.jpg",
-		"*.gif"
+		"*.gif",
+		"*.zip",
+		"*.log",
+		"*.dump"
 	],
 	"folder_exclude_patterns":
 	[
