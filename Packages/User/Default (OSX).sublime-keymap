@@ -11,7 +11,8 @@
   { "keys": ["super+shift+x"], "command": "expand_selection_to_quotes" },
   { "keys": ["super+shift+c"], "command": "toggle_symbol" },
 
-  { "keys": ["super+shift+b"], "command": "cgit" }
+  { "keys": ["super+shift+b"], "command": "cgit" },
+  { "keys": ["super+b"], "command": "git_blame" }
 
   // {
   //   "keys": ["super+shift+c"],
