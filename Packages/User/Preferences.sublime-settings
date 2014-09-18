@@ -43,7 +43,10 @@
 		".git",
 		".hg",
 		"CVS",
-		"tmp"
+		"tmp",
+		"node_modules",
+		"log",
+		"twitter-cldr-js"
 	],
 	"font_face": "Source Code Pro",
 	"font_size": 12.0,
