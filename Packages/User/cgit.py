@@ -3,7 +3,7 @@ import sublime, sublime_plugin
 
 # creates a cgit link to the line of the cursor location, on the working git branch
 
-repos = ("birdcage", "science", "peacock")
+repos = ("birdcage", "science", "peacock", "tfe")
 
 class CgitCommand(sublime_plugin.TextCommand):
 
