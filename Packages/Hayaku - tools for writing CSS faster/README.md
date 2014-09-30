@@ -1,4 +1,6 @@
-# Hayaku <sup>[1.3.3](https://github.com/hayaku/hayaku/blob/master/CHANGELOG.md)</sup>
+# Hayaku <sup>[1.5.2](https://github.com/hayaku/hayaku/blob/master/CHANGELOG.md)</sup> [![Build Status][build]][build-link]
+[build]: https://travis-ci.org/hayaku/hayaku.png?branch=master
+[build-link]: https://travis-ci.org/hayaku/hayaku
 
 Hayaku is a bundle of useful scripts aiming for rapid front-end web development.
 
@@ -25,8 +27,18 @@ The main aim of Hayaku is to create the fastest way to write and maintain CSS co
     - [Creating new CSS rule blocks](#creating-new-css-rule-blocks)
     - [Inline comments](#inline-comments)
     <br/><br/>
+    - [Value cycling <sup>new!</sup>](#value-cycling)
+        - [Supported value types](#supported-value-types)
+        - [Basics](#basics)
+        - [Key bindings](#key-bindings)
 
 3. [Settings and Preferences](#settings-and-preferences)
+    - [User dictionaries <sup>new!</sup>](#user-dictionaries)
+        - [Syntax of user dictionaries](#syntax-of-user-dictionaries)
+        - [User dictionary overrides](#user-dictionary-overrides)
+    - [User aliases <sup>new!</sup>](#user-aliases)
+    - [Using both dictionary and alias <sup>new!</sup>](#using-both-dictionary-and-alias)
+    - [Extra scopes for dictionaries and aliases](#extra-scopes-for-dictionaries-and-aliases)
     - [Autoguessing the code style](#autoguessing-the-code-style)
     - [Single code style](#single-code-style)
     - [Automatic new line after expand](#automatic-new-line-after-expand)
@@ -63,6 +75,22 @@ git clone git://github.com/hayaku/hayaku.git
 ```
 
 And then restart Sublime Text.
+
+## Note on autocomplete
+
+**Important:** Hayaku disables the autocomplete for CSS by default. This was made to remove the ambiguosity and confusion that could happen when you'll see one result in autocomplete and would get something different on pressing `tab`.
+
+You can restore the autocomplete by redefining the `auto_complete_selector` setting in your `User/Preferences.sublime-settings` to either the default value:
+
+``` js
+{
+    "auto_complete_selector": "source - comment, meta.tag - punctuation.definition.tag.begin"
+}
+```
+
+Or to anything other you'd like.
+
+However, for CSS scopes this would only enable the autocompletes by `enter`, the `tab` autocomplete would still run the Hayaku when possible.
 
 # Features
 
@@ -140,7 +168,7 @@ If you need some vendor prefixes, Hayaku could provide them!
 
 `bra1.5` would expand to this:
 
-``` CSS
+``` css
 -webkit-border-radius: 1.5em;
         border-radius: 1.5em;
 ```
@@ -165,7 +193,7 @@ Right now it's available for colors and images urls:
 
 Hayaku offers a setting to set up the behavior of the Clipboard defaults: `hayaku_CSS_clipboard_defaults`. It is an array of the value types that Hayaku could accept as the defaults. So, to disable all the clipboard defaults you could use this setting:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_clipboard_defaults": [""]
 }
@@ -227,15 +255,235 @@ If you'd wish to disable inline comments, you could use this setting: `"hayaku_C
 
 *This feature is in development, we plan on adding a lot of things to make commenting fun.*
 
+## Value cycling
+
+Another big feature Hayaku provides — a powerful implementation of cycling values. You can use it to increment or decrement any numeric values (both in CSS and anywhere else) and to cycle through all the possible values for any given CSS property.
+
+### Supported value types
+
+- **CSS values** — both numeric, like `10px`, and string values, like in `position: fixed` are supported.
+- **Dates in ISO format**.
+- **Versions by semver**.
+- **Just any numbers** — even inside word-like strings like `$foo4`.
+
+### Basics
+
+Unlike other similar implementations, Hayaku's cycling is much more powerful and polished:
+
+- When nothing is selected, Hayaku finds the closest to the caret value in the line and cycles through it.
+
+- When only part of a number is selected, Hayaku understands the context and cycles the selected digit, but handling the whole number, so you could easily increment/decrement numbers by 100, 1000 or 0.001 etc.
+
+- Hayaku tries its best to save the position of the cursor or selection, by adjusting it after the replacement. This way you would always be at the same place as before no matter what.
+
+- Hayaku perfectly handles multiple carets, cycling through each of them.
+
+- Hayaku handles multiple lines selected, cycling through the first value in each line.
+
+- Hayaku can cycle through values of CSS properties, like between `static`, `relative` and `absolute` for `position`.
+
+- It can use all the Hayaku powers beneath! It already can use Hayaku's dictionary for cycling through CSS property values and treat properly properties that can't be negative, and there are a lot of things to appear in the next releases of Hayaku.
+
+We are trying to make this feature as polished as we can, so feel free to report on any, even most minor bugs in cycling and propose improvements!
+
+### Key bindings
+
+The default command comes in three variants:
+
+- `alt+↑` and `alt+↓` would call the default action — incrementing or decrementing numeric value by one, cycling CSS properties etc.
+- `alt+ctrl+↑` and `alt+ctrl+↓` (`win` key instead of `ctrl` for windows) would call “lowered” action, it would do the same thing for everything except numeric values — it would increment or decrement them by `0.1`.
+- `alt+shift+↑` and `alt+shift+↓` on the other hand would increment or decrement numeric values by `10`, doing all the same default stuff for other kinds of values.
+
+If you'd like to use all your own keybindings or Hayaku's keybindings are come in conflict with other installed packages, you can disable the default keybindings using this setting in `User/Preferences.sublime-settings`:
+
+``` js
+"hayaku_use_default_cycling_keymaps": false
+```
+
+Otherwise, if you'd like a more precise control over any action, you can redefine a key binding for this action in your `User/*.sublime-keymap` like this:
+
+``` js
+{
+    "keys": ["alt+up"],
+    "command": "hayaku_cycling_through_values",
+    "args": {"modifier": 1}
+},
+```
+
+The `modifier` is both the direction (for the cycling) and the amount (for numeric), so to cycle backwards CSS values and to reduce the numbers by `3`, you can say there `"args": {"modifier": -3}.`
+
 # Settings and Preferences
 
 Hayaku have **a lot** of different configurable options, both for your code style and for different features you'd wish to use.
+
+## User dictionaries
+
+Hayaku don't have a preset list of snippets. It have a dictionary with properties, their values and other information Hayaku uses to make writing CSS a spectacular experience.
+
+If you don't see a property you use, or a value for some property, or you'd like to change the defaults for anything, you could extend and override the built-in dictionary with anything you'd like.
+
+That's where the three specific settings are coming into play from the box: `hayaku_user_dict`, `hayaku_syntax_dict` and `hayaku_project_dict`.
+
+Those settings work in the same way, applying the provided dictionaries in the given order after the built-in one.
+
+Why is there three settings — to let you make overrides in ST-way. Sublime Text have different scopes for preferences: User's, Syntax Specific and Project, when you declare any settings in the Preferences, all those settings are merged together. Although, each one specific setting is completely overriden by the setting with the same name in the next scope, so there is no simple way to merge things using one name. That's why Hayaku provides you with three settings: you can use `hayaku_user_dict` in your `User/Preferences.sublime-settings`, then add some other things using `hayaku_syntax_dict` in your Syntax Specific settings, like in `user/Stylus.sublime-settings`, and, finally, make overrides for your specific project in your `*.sublime-project` files.
+
+The syntax of all three settings is the same, although don't forget, that for `.sublime-project` you need to place the settings into the `"settings": {}` key.
+
+### Syntax of user dictionaries
+
+Hayaku uses `json` for defining dictionaries, you can see the [build-in one](https://github.com/hayaku/hayaku/blob/master/dictionaries/hayaku_CSS_dictionary.json) as an example.
+
+The dictionary is an array, consisting of property objects having this structure:
+
+``` js
+{
+    "name": "position",
+    "values": [ "static", "relative", "absolute", "fixed" ]
+}
+```
+
+Where the `name` is the property's name and the `values` is the array of possible values.
+
+This is the simplest example, however there could be more complex entries like this one:
+
+``` js
+{
+    "name": "width, height, min-width, min-height",
+    "values": [ "auto", "<dimension>" ],
+    "default": "100%",
+    "always_positive": true
+}
+```
+
+There are four things to mention:
+
+1. You can specify more than one property in `name`, just divide them by comma and optional spaces.
+
+2. There are some special entities that can go into values, like `<dimension>`, this means that if there is a “property” entry with this name, it would be expanded to it. Think of it as of links.
+
+3. There is a possible `default` key that contains the value that would be inserted in the result if there were no values given.
+
+4. There is a `always_positive` key that tells Hayaku that this property accepts only positive numbers, so the Cycling feature won't reduce it below zero.
+
+There are other possible values, you can read the build-in dictionary and see which ones (in future we would explain all of them in the docs, of course).
+
+### User dictionary overrides
+
+Except for the things mentioned above, there are some things you can use that are absent in the built-in dictinary.
+
+The first one is an ability to remove values from the dictionary, just use `remove_values` key with the array of the values you'd like to remove from the given property.
+
+For example, this User dictionary would remove `static` from `position`:
+
+``` js
+{
+    "hayaku_user_dict": [
+        {
+            "name": "position",
+            "remove_values": ["static"]
+        }
+    ]
+}
+```
+
+The second thing is that you can control where the new values would go. By default they would be placed before all the built-in ones, but if you'll need to change this, you could define where all the non-defined values of built-in dictionary should go. This is done using `"..."` token in `values` array. An example:
+
+``` js
+{
+    "hayaku_user_dict": [
+        {
+            "name": "position",
+            "values": ["static", "..." ,"sticky"]
+        }
+    ]
+}
+```
+
+Such dictionary would make the `static` value to go first, then all other built-in values would be placed and the `sticky` value would be the last one.
+
+## User aliases
+
+In some cases you would want some abbreviation to point to a different property, for example you would want `z` to point at `z-index` and not to `zoom`. For this purpose there are settings similar to the dictionary ones: `hayaku_user_aliases`, `hayaku_syntax_aliases` and `hayaku_project_aliases`:
+
+``` js
+{
+    "hayaku_user_aliases": {
+        "z": "z-index"
+    }
+}
+```
+
+would do the work for you.
+
+You can alias both only properties (and it would work for complex abbreviations, so `z9` would be `z-index: 9` with an above abbreviation), and for property-value parts, so you can create an abbreviation like this:
+
+``` js
+{
+    "hayaku_user_aliases": {
+        "fv": "font: 11px/1.5 Verdana, sans-serif"
+    }
+}
+```
+
+And then tabbing after `fv` would give you the desired output.
+
+However, you can also use a user dictionary for this:
+
+``` js
+{
+    "hayaku_user_dict": {
+        "CSS": [
+            {
+                "name": "font",
+                "values": [
+                    "11px/1.5 Verdana, sans-serif"
+                ]
+            }
+        ]
+    }
+}
+```
+
+And then you could write `fver`, `fonve`, `f:v` or any other abbreviations that Hayaku would expand to the desired output.
+
+## Using both dictionary and alias
+
+The difference between creating an alias and defining a new value in a User Dict is that alias works like a static snippet (with an addition to possible values), but a new value in a Dict would be treated along other values and properties, Hayaku would still use its alrorithm and would select `font-variant` for `fv` instead of the `font: 11px/1.5 Verdana, sans-serif`.
+
+However, one of the nice things in aliases is that they're aliases not to some static strings, but to Hayaku abbreviations. This way you can add this to your User settings:
+
+``` js
+{
+    "hayaku_user_aliases": {
+        "fv": "font:verdana"
+    },
+    "hayaku_user_dict": {
+        "CSS": [
+            {
+                "name": "font",
+                "values": [
+                    "11px/1.5 Verdana, sans-serif"
+                ]
+            }
+        ]
+    }
+}
+```
+
+And then you would have both abbreviations like `fove` to work, and `fv` would be aliased to the abbreviation that also would work like intended! This is also means reuse, so if you'd like to change that one value, you'll need to change it only in one place.
+
+## Extra scopes for dictionaries and aliases
+
+In a case you would need more than three scopes, you can add more using a `hayaku_extra_scopes` option that accepts an array of extra scopes.
+
+For example, `"hayaku_extra_scopes": ['ololo'],` would allow you to define extra `hayaku_ololo_dict` and `hayaku_ololo_aliases` which would be merged after the `user`, `syntax` and `project` in the given order.
 
 ## Autoguessing the code style
 
 The easiest way to set the basic settings for your codestyle, is to use `hayaku_CSS_syntax_autoguess` option:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_syntax_autoguess": [
         "    selector {              ",
@@ -258,7 +506,7 @@ If you don't want to use autoguessing, then you could define single options one 
 
 Here is a JSON with all the available single code styling options:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_whitespace_after_colon":        " ",
     "hayaku_CSS_whitespace_block_start_before": " ",
@@ -276,7 +524,7 @@ The important thing is that the single code style settings always override the a
 
 That's somewhat experimental feature, that is disabled by default. To enable it use this setting:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_newline_after_expand": true
 }
@@ -288,7 +536,7 @@ With this setting you could save a bit more time, cause Hayaku would add a new l
 
 By default Hayaku uses double quotes for different CSS stuff (like `content: ""`). You can change this by setting this:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_syntax_quote_symbol": "'"
 }
@@ -300,7 +548,7 @@ Also, by default the image urls wouldn't have quotes in CSS-like syntaxes and wo
 
 By default Hayaku won't add `em` or `px` after values for properties like `line-height`. If you're not using unit less values for those properties, you could enable them like this:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_units_for_unitless_numbers": true
 }
@@ -310,7 +558,7 @@ By default Hayaku won't add `em` or `px` after values for properties like `line-
 
 If you don't want to use any prefixes at all (as if you're using some mixins for it in Stylus, or use prefix-free), you can disable them with that option:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_prefixes_disable": true
 }
@@ -320,7 +568,7 @@ If you don't want to use any prefixes at all (as if you're using some mixins for
 
 By default Hayaku aligns expanded prefixed properties in this nice way:
 
-``` CSS
+``` css
 .foo {
     -webkit-transform: rotate(45deg);
        -moz-transform: rotate(45deg);
@@ -334,7 +582,7 @@ This way it's easier to spot changes to a single prefixed property and to use mu
 
 However, if you'd want to expand such properties left aligned, set
 
-``` JSON
+``` js
 {
     "hayaku_CSS_prefixes_align": false
 }
@@ -344,7 +592,7 @@ However, if you'd want to expand such properties left aligned, set
 
 This is not something that you would use often, but if you'd need, you could use only prefixes for browsers you want. There are two settings for this:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_prefixes_only": ["webkit","moz","o"],
     "hayaku_CSS_prefixes_no_unprefixed": true
@@ -366,7 +614,7 @@ You can tell Hayaku if you prefer `lowercase` or `uppercase` for color values, s
 
 The default value is `uppercase`, so `c#f` would become `color: #FFF`. If you'd like to change that to `lowercase`, you can set it this way:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_colors_case": "lowercase"
 }
@@ -380,7 +628,7 @@ By default Hayaku shortens the colous, so if there could be `#FFFFFF` expanded, 
 
 However, if you wish, you can redefine this behavior using this setting:
 
-``` JSON
+``` js
 {
     "hayaku_CSS_colors_length": "long"
 }
@@ -398,6 +646,10 @@ Right now only basic things are available, but in the future you could expand di
 - - -
 
 And this is just the start, there would be a lot of other nice features, so still tuned and follow the [official bundle's twitter](http://twitter.com/#!/hayakubundle)!
+
+# Acknowledgments
+
+The initial idea of Hayaku for CSS came from the merged ideas of [Vadim Makeev](https://twitter.com/pepelsbey) ([Zen CSS](http://pepelsbey.net/2008/10/zen-css/)) and [Vitaly Harisov](https://twitter.com/harisov) ([CSS Snippets](http://vitaly.harisov.name/article/css-fast-typing.html)). Big thanks to them!
 
 # License and copyrights
 

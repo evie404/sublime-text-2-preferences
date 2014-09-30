@@ -1,4 +1,6 @@
-{ "hayaku_CSS_dictionary":
+{
+
+"CSS":
 [
     {"_Description": [
         "    Dictionary for Hayaku Core, http://hayakubundle.com          ",
@@ -72,12 +74,12 @@
         "values": [ "none", "left", "right", "both" ]
     },{
         "name": "display",
-        "values": [ "inline", "block", "inline-block", "list-item", "none", "table", "inline-table", "table-row-group", "table-header-group", "table-footer-group", "table-row", "table-cell", "table-column", "table-caption", "table-column-group", "run-in", "compact", "flexbox", "inline-flexbox" ]
+        "values": [ "none", "block", "inline", "inline-block", "list-item", "table", "inline-table", "table-row-group", "table-header-group", "table-footer-group", "table-row", "table-cell", "table-column", "table-caption", "table-column-group", "run-in", "compact", "flex", "inline-flex" ]
     },{
         "name": "visibility",
-        "values": [ "visible", "hidden", "collapse" ]
+        "values": [ "visible", "hidden", "collapse", "inherit" ]
     },{
-        "name": [ "overflow" ],
+        "name": "overflow",
         "values": [ "visible", "hidden", "scroll", "auto" ]
     },{
         "name": [ "overflow-x", "overflow-y" ],
@@ -95,36 +97,76 @@
         "values": [ "<box-sizing>", "padding-box" ]
     },{
         "name": "flex-direction",
-        "values": [ "lr", "rl", "tb", "bt", "inline", "inline-reverse", "block", "block-reverse" ]
+        "values": [ "row", "row-reverse", "column", "column-reverse" ],
+        "prefixes": [ "webkit", "ms" ]
     },{
-        "name": "flex-order",
-        "values": [ "<integer>" ]
+        "name": "flex-wrap",
+        "values": [ "nowrap", "wrap", "wrap-reverse" ],
+        "prefixes": [ "webkit", "ms" ]
     },{
-        "name": "flex-pack",
-        "values": [ "start", "end", "center", "justify" ]
+        "name": "flex-flow",
+        "values": [ "<flex-direction>", "<flex-wrap>" ],
+        "prefixes": [ "webkit", "ms" ]
     },{
-        "name": "flex-align",
-        "values": [ "auto", "baseline" ]
+        "name": "order",
+        "values": [ "<integer>" ],
+        "prefixes": [ "webkit", "ms" ]
+    },{
+        "name": ["flex-grow", "flex-shrink"],
+        "values": [ "<number>" ],
+        "prefixes": [ "webkit" ]
+    },{
+        "name": "flex-basis",
+        "values": [ "<width>" ],
+        "prefixes": [ "webkit" ]
+    },{
+        "name": "flex",
+        "values": [ "none", "<flex-grow>", "<flex-shrink>", "<flex-basis>" ],
+        "prefixes": [ "webkit", "ms" ]
+    },{
+        "name": "justify-content",
+        "values": [ "flex-start", "flex-end", "center", "space-between", "space-around" ],
+        "prefixes": [ "webkit" ]
+    },{
+        "name": "align-items",
+        "values": [ "flex-start", "flex-end", "center", "baseline", "stretch" ],
+        "prefixes": [ "webkit" ]
+    },{
+        "name": "align-self",
+        "values": [ "auto", "<align-items>" ],
+        "prefixes": [ "webkit" ]
+    },{
+        "name": "align-content",
+        "values": [ "flex-start", "flex-end", "center", "space-between", "space-around", "stretch" ],
+        "prefixes": [ "webkit" ]
     },{
         "name": "pointer-events",
         "values": [ "none", "all" ]
-
-
+    },{
+        "name": "appearance",
+        "values": [ "none" ],
+        "prefixes": [ "webkit", "moz" ]
+    },{
+        "name": "-webkit-font-smoothing",
+        "values": [ "antialiased", "subpixel-antialiased", "none" ]
 
     },{
         "name": [ "margin", "margin-top", "margin-right", "margin-bottom", "margin-left" ],
         "values": [ "auto", "<dimension>" ]
     },{
         "name": "padding, padding-top, padding-right, padding-bottom, padding-left",
-        "values": [ "<dimension>" ]
+        "values": [ "<dimension>" ],
+        "always_positive": true
     },{
         "name": "width, height, min-width, min-height",
         "values": [ "auto", "<dimension>" ],
-        "default": "100%"
+        "default": "100%",
+        "always_positive": true
     },{
         "name": "max-height, max-width",
         "values": [ "none", "<dimension>" ],
-        "default": "100%"
+        "default": "100%",
+        "always_positive": true
 
 
 
@@ -157,14 +199,15 @@
         "values": [ "none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset" ]
     },{
         "name": [ "border-width", "border-top-width", "border-right-width", "border-bottom-width", "border-left-width" ],
-        "values": [ "thin", "medium", "thick", "<length>" ]
+        "values": [ "thin", "medium", "thick", "<length>" ],
+        "always_positive": true
     },{
         "name": [ "border", "border-top", "border-right", "border-bottom", "border-left" ],
-        "values": [ "<border-color>", "<_border-style>", "<border-width>" ],
+        "values": [ "none", "<border-color>", "<_border-style>", "<border-width>" ],
         "default": "1px solid"
     },{
         "name": [ "border-radius", "border-top-right-radius", "border-top-left-radius", "border-bottom-left-radius", "border-bottom-right-radius" ],
-        "values": [ "<length>" ],
+        "values": [ "<dimension>" ],
         "prefixes": [ "webkit" ]
     },{
         "name": "<border-image-source>",
@@ -223,7 +266,7 @@
         "prefixes": [ "webkit", "o" ]
     },{
         "name": "background",
-        "values": [ "<_background-attachment>", "<background-color>", "<background-image>", "<_background-position>", "<_background-repeat>", "none" ]
+        "values": [ "none", "<_background-attachment>", "<background-color>", "<_background-position>", "<_background-repeat>", "<background-image>" ]
     },{
         "name": "box-decoration-break",
         "values": [ "slice", "clone" ]
@@ -322,7 +365,8 @@
         "values": [ "<length>", "none" ]
     },{
         "name": "line-height",
-        "values": [ "normal", "<number>", "<dimension>" ]
+        "values": [ "normal", "<number>", "<dimension>" ],
+        "always_positive": true
     },{
         "name": "white-space",
         "values": [ "normal", "pre", "nowrap", "pre-wrap", "pre-line" ]
@@ -333,6 +377,9 @@
         "name": "word-wrap",
         "values": [ "normal", "break-word" ],
         "prefixes": [ "ms" ]
+    },{
+        "name": "overflow-wrap",
+        "values": [ "normal", "break-word", "hyphenate" ]
     },{
         "name": "word-break",
         "values": [ "normal", "keep-all", "break-all" ],
@@ -349,13 +396,20 @@
         "values": [ "serif", "sans-serif", "cursive", "fantasy", "monospace", "<family-name>" ]
     },{
         "name": "font-size",
-        "values": [ "larger", "smaller", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "<dimension>" ]
+        "values": [ "larger", "smaller", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "<dimension>" ],
+        "always_positive": true
     },{
         "name": "font-style",
         "values": [ "normal", "italic", "oblique" ]
     },{
         "name": "font-variant",
         "values": [ "normal", "small-caps" ]
+    },{
+        "name": "font-variant-ligatures",
+        "values": [ "none", "normal", "common-ligatures", "no-common-ligatures", "discretionary-ligatures", "no-discretionary-ligatures", "historical-ligatures", "no-historical-ligatures", "contextual", "no-contextual" ]
+    },{
+        "name": "font-feature-settings",
+        "values": [ "normal", "<string>", "<integer>", "on", "off" ]
     },{
         "name": "font-weight",
         "values": [ "normal", "bold", "bolder", "lighter", "100", "200", "300", "400", "500", "600", "700", "800", "900" ]
@@ -365,6 +419,9 @@
     },{
         "name": "font-stretch",
         "values": [ "normal", "ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded" ]
+    },{
+        "name": "font-kerning",
+        "values": [ "none", "auto", "normal" ]
     },{
         "name": "font",
         "values": [ "<font_values>" ]
@@ -376,7 +433,7 @@
         "name": "writing-mode",
         "values": [ "lr-tb", "rl-tb", "tb-rl", "bt-rl", "tb-lr", "bt-lr", "lr-bt", "rl-bt", "lr", "rl", "tb" ],
         "prefixes": [ "moz", "o" ],
-        "no-unprefixed-property": true
+        "no_unprefixed_property": true
 
 
 
@@ -387,7 +444,7 @@
         "name": "interpolation-mode",
         "values": [ "bicubic", "nearest-neighbor" ],
         "prefixes": [ "ms" ],
-        "no-unprefixed-property": true
+        "no_unprefixed_property": true
     },{
         "name": "resize",
         "values": [ "none", "both", "horizontal", "vertical" ]
@@ -415,40 +472,60 @@
         "prefixes": [ "webkit", "moz", "ms", "o" ]
     },{
         "name": "transform",
-        "values": [ "none", "matrix()", "matrix3d()", "perspective()", "rotate()", "rotateX()", "rotateY()", "rotateZ()", "scale()", "scaleX()", "scaleY()", "scaleZ()", "skew()", "skewX()", "skewY()", "translate()", "translateX()", "translateY()", "translateZ()", "translate3d()" ],
+        "values": [ "none", "matrix()", "matrix3d()", "perspective()", "rotate()", "rotateX()", "rotateY()", "rotateZ()", "scale()", "scaleX()", "scaleY()", "scaleZ()", "skewX()", "skewY()", "translate()", "translateX()", "translateY()", "translateZ()", "translate3d()" ],
         "prefixes": [ "webkit", "moz", "ms", "o" ]
     },{
         "name": "transform-origin",
         "values": [ "top", "center", "bottom", "left", "center", "right", "<percentage>", "<length>" ],
         "prefixes": [ "webkit", "moz", "ms", "o" ]
     },{
+        "name": "transform-style",
+        "values": [ "preserve-3d", "flat" ],
+        "prefixes": [ "webkit", "moz" ]
+    },{
+        "name": "perspective",
+        "values": [ "none", "<length>" ],
+        "prefixes": [ "webkit", "moz" ]
+    },{
+        "name": "perspective-origin",
+        "values": [ "<length>", "<percentage>", "left", "center", "right", "top", "bottom" ],
+        "prefixes": [ "webkit", "moz" ]
+    },{
+        "name": "backface-visibility",
+        "values": [ "visible", "hidden" ],
+        "prefixes": [ "webkit", "moz" ]
+    },{
         "name": "animation-name",
         "values": [ "none", "<properties>" ],
-        "prefixes": [ "webkit", "moz", "ms", "o" ]
+        "prefixes": [ "webkit", "moz", "o" ]
     },{
         "name": [ "animation-duration", "animation-delay" ],
         "values": [ "<time>" ],
-        "prefixes": [ "webkit", "moz", "ms", "o" ]
+        "prefixes": [ "webkit", "moz", "o" ]
     },{
         "name": "animation-timing-function",
         "values": [ "<timing-function>" ],
-        "prefixes": [ "webkit", "moz", "ms", "o" ]
+        "prefixes": [ "webkit", "moz", "o" ]
     },{
         "name": "animation-iteration-count",
         "values": [ "infinite", "<number>" ],
-        "prefixes": [ "webkit", "moz", "ms", "o" ]
+        "prefixes": [ "webkit", "moz", "o" ]
     },{
         "name": "animation-direction",
-        "values": [ "normal", "alternate" ],
-        "prefixes": [ "webkit", "moz", "ms", "o" ]
+        "values": [ "normal", "alternate", "reverse", "alternate-reverse" ],
+        "prefixes": [ "webkit", "moz", "o" ]
     },{
         "name": "animation",
         "values": [ "<animation-name>", "<animation-duration>", "<animation-timing-function>", "<animation-delay>", "<animation-iteration-count>", "<animation-direction>" ],
-        "prefixes": [ "webkit", "moz", "ms", "o" ]
+        "prefixes": [ "webkit", "moz", "o" ]
     },{
         "name": "animation-play-state",
         "values": [ "running", "paused" ],
-        "prefixes": [ "webkit", "moz", "ms", "o" ]
+        "prefixes": [ "webkit", "moz", "o" ]
+    },{
+        "name": "animation-fill-mode",
+        "values": [ "none", "forwards", "backwards", "both" ],
+        "prefixes": [ "webkit", "moz", "o" ]
     },{
         "name": "filter",
         "_comment": "conflicts with font-style etc.",
@@ -529,5 +606,73 @@
 
 
     }
+],
+
+"_comment": [
+    "('b', 'bottom'), # Sides consistency",
+    "('ba', 'background'), # Instead of background-attachment",
+    "('bg', 'background'), # Instead of background: linear-gradient",
+    "('bd', 'border'), # Instead of border-style: dashed;",
+    "('bbc', 'border-bottom-color'), # Instead of background-break continuous",
+    "('br', 'border-right'), # Instead of border-radius",
+    "('bt', 'border-top'), # Instead of border: thick",
+    "('bdr', 'border-right'), # Instead of border-radius",
+    "('bds', 'border-style'), # Instead of border-spacing",
+    "('bo', 'border'), # Instead of background-origin",
+    "('bos', 'border-style'), # Instead of box-shadow (?)",
+    "('ct', 'content'), # Istead of color transparent",
+    "('f', 'font'), # Istead of float (do we really need this?)",
+    "('p', 'padding'), # Instead of position (w/h/p/m consistency)",
+    "('pr', 'padding-right'), # Instead of position relative",
+
+    "('bg', 'background'), # Instead of border-style: groove;",
+    "('bd', 'border'), # Instead of background (Zen CSS support)",
+    "('lt', 'letter'),",
+    "('tf', 'transform'),",
+    "('tr', 'transition'),"
+],
+
+"CSS_aliases": {
+    "b":   "bottom:",
+    "ba":  "background:",
+    "bg":  "background:",
+    "bd":  "border:",
+    "bbc": "border-bottom-color:",
+    "br":  "border-right:",
+    "bt":  "border-top:",
+    "bdr": "border-right:",
+    "bds": "border-style:",
+    "bo":  "border:",
+    "bos": "border-style:",
+    "ct":  "content:",
+    "f":   "font:",
+    "p":   "padding:",
+    "pr":  "padding-right:",
+    "ai":  "align-items:",
+    "tf": "transform:",
+
+    "bg...": "background",
+    "bd...": "border",
+    "lt...": "letter",
+    "tf...": "transform",
+    "tr...": "transition",
+    "po...": "position"
+},
+
+"Stylus":
+[
+],
+
+"Sass":
+[
+],
+
+"SCSS":
+[
+],
+
+"Less":
+[
 ]
+
 }

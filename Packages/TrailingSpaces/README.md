@@ -6,6 +6,31 @@ A [Sublime Text 2](http://www.sublimetext.com/2) and
 
 **highlight trailing spaces and delete them in a flash!**
 
+---
+
+- [Synopsis](#synopsis)
+- [Installation](#installation)
+	- [Alternative installation methods](#alternative-installation-methods)
+		- [From github](#from-github)
+		- [Manually](#manually)
+- [Usage](#usage)
+	- [Deletion](#deletion)
+	- [Toggling highlighting](#toggling-highlighting)
+- [Options](#options)
+	- [Changing the highlighting color](#changing-the-highlighting-color)
+	- [Keeping trailing spaces invisible](#keeping-trailing-spaces-invisible)
+	- [Include Current Line](#include-current-line)
+	- [Include Empty Lines](#include-empty-lines)
+	- [Modified Lines Only](#modified-lines-only)
+	- [Trim On Save](#trim-on-save)
+	- [Save After Trim](#save-after-trim)
+	- [Live Matching vs On-demand Matching](#live-matching-vs-on-demand-matching)
+	- [Ignore Syntax](#ignore-syntax)
+	- [For power-users only!](#for-power-users-only)
+		- [Disabled for large files](#disabled-for-large-files)
+		- [The matching pattern](#the-matching-pattern)
+- [About Sublime Text's built-in features](#about-sublime-texts-built-in-features)
+
 Synopsis
 --------
 
@@ -91,7 +116,7 @@ Options
 Several options are available to customize the plugin's behavior. Those
 settings are stored in a configuration file, as JSON. You must use a specific
 file: Go to "Preferences / Package Settings / Trailing Spaces / Settings
-- User" to add you custom settings. You can look at the default values in
+\- User" to add you custom settings. You can look at the default values in
 "Settings - Default", in the same menu.
 
 A few of them are also accessible through the "Edit / Trailing Spaces" menu.
@@ -252,6 +277,18 @@ toggle highlighting on and off. In this case, it may come in handy to define
 a binding for the toggling command. When "On-demand Matching" is on and some
 trailing spaces are highlighted, added ones will obviously not be. Toggling
 highlight off and on will refresh them.
+
+### Ignore Syntax
+
+*Default: []*
+
+With this option you can ignore specific files/views based on the syntax used.
+An item has to match a case-sensitive substring of the syntax used in the view:
+
+``` js
+// Views with a syntax that contains "Diff" are ignored
+{ "trailing_spaces_syntax_ignore": ["Diff"]}
+```
 
 ### For power-users only!
 

@@ -1,5 +1,70 @@
 # Changelog for Hayaku
 
+## 1.5.2 <sup>2014.08.06</sup>
+
+- Fixed missing `none` value for border-… shorthands, #291.
+
+## 1.5.1 <sup>2014.07.31</sup>
+
+- Fixed `CSS_syntax_quote_symbol` option that didn't work when `CSS_syntax_url_quotes` was set to false.
+
+## 1.5.0 <sup>2014.07.07</sup>
+
+- Added support for any hayaku abbreviations as alias values.
+- Added support for any unknown values after a colon in abbreviation.
+- Added support for unknown units after numbers.
+- Added `plain-text` template output, alongside the `full`.
+- Updated and fixed dictionary with some transform and animation stuff.
+- Fixed incorrect letter case dependance for values.
+- Fixed lost transform alias.
+- Fixed troubles with spaces in values.
+- Fixed unavailable user preprocessor dicts in cycling.
+- Fixed the handling of full properties/values.
+- Fixed the colon at the end of abbreviation.
+- Fixed absent percents for border-radius.
+- Fixed quote symbol option to work in more cases.
+
+## 1.4.2 <sup>2014.06.12</sup>
+
+- Fixed regression for inner tabstops, like in transforms.
+
+## 1.4.1 <sup>2014.06.11</sup>
+
+- Fixed ST2 utf problem.
+
+## 1.4.0 <sup>2014.06.09</sup>
+
+- **New feature:** value cycling.
+- **New feature:** user-defined dictionaries.
+- **New feature:** user-defined aliases.
+- Refactored code a bit, added basic tests.
+- Now using commented for abbreviations links from dict in postexpands.
+- Updated flex properties and some other minor ones.
+- Allowed usage of `+` (although, not in the end), `$` and `@` in abbreviations.
+- Fixed rare postexpand conflicts.
+- Fixed always positive `hayaku_CSS_prefixes_align` setting.
+
+## 1.3.6 <sup>2014.02.01</sup>
+
+- Better postexpand for colors, using color length option.
+- Mentioned disabling autocomplete in README.
+- Slightly better disabling of autocomplete.
+- Allowed using `enter` for autocomplete.
+
+## 1.3.5 <sup>2013.10.27</sup>
+
+- Fixed incorrect indent in Sass-like syntax for new blocks ([#198][])
+
+[#198]: https://github.com/hayaku/hayaku/issues/198
+
+## 1.3.4 <sup>2013.10.26</sup>
+
+- Fixed support of `.less` files ([#227][])
+- Fixed the style of colors inserted from clipboard ([#212][])
+
+[#227]: https://github.com/hayaku/hayaku/issues/227
+[#212]: https://github.com/hayaku/hayaku/issues/212
+
 ## 1.3.3 <sup>2013.03.02</sup>
 
 - **New setting:** `hayaku_CSS_syntax_quote_symbol` for used quote symbol ([#71][])
