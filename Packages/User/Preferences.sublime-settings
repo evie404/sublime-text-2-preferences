@@ -1,4 +1,4 @@
-{
+ {
 	"color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
 	"copy_with_empty_selection": true,
 	"file_exclude_patterns":
@@ -35,7 +35,8 @@
 		"*.gif",
 		"*.zip",
 		"*.log",
-		"*.dump"
+		"*.dump",
+		"*.enc"
 	],
 	"folder_exclude_patterns":
 	[
