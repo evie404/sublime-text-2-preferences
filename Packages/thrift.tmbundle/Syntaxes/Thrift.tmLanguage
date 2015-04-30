@@ -785,7 +785,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(^[ \t]+)?(?=\/\/)</string>
+					<string>(^[ \t]+)?(?=//)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -795,7 +795,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>($\n?)</string>
+					<string>(?!\G)</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -889,7 +889,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>[,;]|(?=[)#])|$</string>
+			<string>[,;]|(?=[)#]|//|/\*)|$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -932,14 +932,14 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?=[,;]|[)#])|$</string>
+					<string>(?=[,;]|[)#]|//|/\*)|$</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>begin</key>
 							<string>=</string>
 							<key>end</key>
-							<string>(?=[,;]|[)#])|$</string>
+							<string>(?=[,;]|[)#]|//|/\*)|$</string>
 							<key>patterns</key>
 							<array>
 								<dict>
