@@ -47,7 +47,9 @@
 		"tmp",
 		"node_modules",
 		"log",
-		"twitter-cldr-js"
+		"twitter-cldr-js",
+		"bower_components",
+		"dist"
 	],
 	"font_face": "Source Code Pro",
 	"font_size": 12.0,
@@ -55,6 +57,7 @@
 	[
 		"Vintage",
 		"RubyTest",
+		"GitGutter",
 		"SublimeLinter"
 	],
 	"tab_size": 2,
