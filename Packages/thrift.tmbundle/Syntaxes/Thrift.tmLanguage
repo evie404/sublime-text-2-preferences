@@ -785,7 +785,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(^[ \t]+)?(?=//)</string>
+					<string>(^[ \t]+)?(?=\/\/)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -795,7 +795,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?!\G)</string>
+					<string>($\n?)</string>
 					<key>patterns</key>
 					<array>
 						<dict>
