@@ -5,6 +5,7 @@ import sublime_plugin
 import sublime
 import re
 import time
+from os.path import basename
 
 # limits to prevent bogging down the system
 MIN_WORD_SIZE = 3
@@ -13,6 +14,7 @@ MAX_WORD_SIZE = 50
 MAX_VIEWS = 20
 MAX_WORDS_PER_VIEW = 100
 MAX_FIX_TIME_SECS_PER_VIEW = 0.01
+
 
 class AllAutocomplete(sublime_plugin.EventListener):
 
@@ -32,23 +34,33 @@ class AllAutocomplete(sublime_plugin.EventListener):
                 view_words = v.extract_completions(prefix)
             view_words = filter_words(view_words)
             view_words = fix_truncation(v, view_words)
-            words += view_words
+            words += [(w, v) for w in view_words]
 
         words = without_duplicates(words)
-        matches = [(w, w.replace('$', '\\$')) for w in words]
+        matches = []
+        for w, v in words:
+            trigger = w
+            contents = w.replace('$', '\\$')
+            if v.id != view.id and v.file_name():
+                trigger += '\t(%s)' % basename(v.file_name())
+            matches.append((trigger, contents))
         return matches
+
 
 def filter_words(words):
     words = words[0:MAX_WORDS_PER_VIEW]
     return [w for w in words if MIN_WORD_SIZE <= len(w) <= MAX_WORD_SIZE]
 
+
 # keeps first instance of every word and retains the original order
 # (n^2 but should not be a problem as len(words) <= MAX_VIEWS*MAX_WORDS_PER_VIEW)
 def without_duplicates(words):
     result = []
-    for w in words:
-        if w not in result:
-            result.append(w)
+    used_words = []
+    for w, v in words:
+        if w not in used_words:
+            used_words.append(w)
+            result.append((w, v))
     return result
 
 
@@ -86,9 +98,10 @@ def fix_truncation(view, words):
 
     return fixed_words
 
+
 if sublime.version() >= '3000':
-  def is_empty_match(match):
-    return match.empty()
+    def is_empty_match(match):
+        return match.empty()
 else:
-  def is_empty_match(match):
-    return match is None
+    def is_empty_match(match):
+        return match is None
