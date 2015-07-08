@@ -64,10 +64,12 @@
 	[
 		"Vintage",
 		"RubyTest",
-		// "GitGutter",
 		"SublimeLinter"
 	],
-	"rulers": [100],
+	"rulers":
+	[
+		100
+	],
 	"tab_size": 2,
 	"theme": "Soda Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
