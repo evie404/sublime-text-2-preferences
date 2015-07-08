@@ -14,7 +14,7 @@
   { "keys": ["super+shift+x"], "command": "expand_selection_to_quotes" },
   { "keys": ["super+shift+c"], "command": "toggle_symbol" },
 
-  { "keys": ["super+shift+b"], "command": "cgit" },
+  { "keys": ["super+shift+b"], "command": "github_link" },
   { "keys": ["super+b"], "command": "git_blame" },
 
   { "keys": ["super+o"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} }
