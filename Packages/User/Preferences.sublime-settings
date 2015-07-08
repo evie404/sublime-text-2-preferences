@@ -1,6 +1,7 @@
 {
 	"color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
 	"copy_with_empty_selection": true,
+	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
 		"*.css%3F",
@@ -40,16 +41,22 @@
 	],
 	"folder_exclude_patterns":
 	[
-		".svn",
+		".chefrepo",
 		".git",
 		".hg",
-		"CVS",
-		"tmp",
-		"node_modules",
-		"log",
-		"twitter-cldr-js",
+		".idea",
+		".svn",
+		".vagrant",
 		"bower_components",
-		"dist"
+		"CVS",
+		"dist",
+		"log",
+		"logs",
+		"node_modules",
+		"spec/reports",
+		"tmp",
+		"twitter-cldr-js",
+		"Zend"
 	],
 	"font_face": "Source Code Pro",
 	"font_size": 12.0,
@@ -57,9 +64,10 @@
 	[
 		"Vintage",
 		"RubyTest",
-		"GitGutter",
+		// "GitGutter",
 		"SublimeLinter"
 	],
+	"rulers": [100],
 	"tab_size": 2,
 	"theme": "Soda Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
