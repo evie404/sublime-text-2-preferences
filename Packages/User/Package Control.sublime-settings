@@ -7,7 +7,6 @@
 	[
 		"Alignment",
 		"All Autocomplete",
-		"Coffeescript",
 		"CoffeeScript",
 		"DetectSyntax",
 		"Expand Selection to Quotes",
@@ -20,7 +19,6 @@
 		"nginx",
 		"Package Control",
 		"Pretty JSON",
-		"Rails Related Files",
 		"RailsGoToSpec",
 		"Revert All Files",
 		"RSpec",

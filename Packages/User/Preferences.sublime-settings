@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Sunburst (SL).tmTheme",
 	"copy_with_empty_selection": true,
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
@@ -68,8 +68,7 @@
 	"ignored_packages":
 	[
 		"Vintage",
-		"RubyTest",
-		"SublimeLinter"
+		"RubyTest"
 	],
 	"rulers":
 	[
