@@ -531,7 +531,7 @@
 					"file": "/Users/ricky_pai/Library/Application Support/Sublime Text 3/.gitignore",
 					"settings":
 					{
-						"buffer_size": 332,
+						"buffer_size": 372,
 						"line_ending": "Unix"
 					}
 				}
@@ -634,15 +634,15 @@
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 332,
+								"buffer_size": 372,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										308,
-										308
+										372,
+										372
 									]
 								],
 								"settings":
