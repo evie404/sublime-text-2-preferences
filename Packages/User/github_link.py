@@ -3,7 +3,7 @@ import sublime, sublime_plugin
 
 # creates a github link to the line of the cursor location, on the working git branch
 
-REPOS = ["airbnb", "restore", "chef", "milestones", "deployboard"]
+REPOS = ["airbnb", "restore", "chef", "milestones", "deployboard", "tungsten-support"]
 BASE_URL = "https://git.musta.ch/airbnb/"
 
 class GithubLinkCommand(sublime_plugin.TextCommand):
