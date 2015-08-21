@@ -7,7 +7,7 @@ REPOS = ["airbnb", "restore", "chef", "milestones", "deployboard", "tungsten-sup
 BASE_URL = "https://git.musta.ch/airbnb/"
 
 class GithubLinkCommand(sublime_plugin.TextCommand):
-  def run(self, edit):
+  def run(self, edit, branch_override = None):
     file_name = self.view.file_name()
     dir_path = "/".join(file_name.split("/")[:-1])
 
@@ -15,7 +15,7 @@ class GithubLinkCommand(sublime_plugin.TextCommand):
     branch_cmd = "cd %s; git rev-parse --abbrev-ref HEAD" % dir_path
 
     repo_directory = os.popen(repo_directory_cmd).read()[:-1]
-    branch_name = os.popen(branch_cmd).read()[:-1]
+    branch_name = branch_override or os.popen(branch_cmd).read()[:-1]
     repo_name = self._get_repo_name(repo_directory)
 
     if repo_name is None:

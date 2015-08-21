@@ -15,6 +15,8 @@
   { "keys": ["super+shift+c"], "command": "toggle_symbol" },
 
   { "keys": ["super+shift+b"], "command": "github_link" },
+  { "keys": ["super+ctrl+b"], "command": "github_link", "args": { "branch_override": "master" } },
+
   { "keys": ["super+b"], "command": "git_blame" },
 
   { "keys": ["super+o"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} }
