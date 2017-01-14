@@ -75,9 +75,7 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
-		"CoffeeScript",
-		"RubyTest",
-		"Vintage"
+
 	],
 	"remember_open_files": false,
 	"rulers":
