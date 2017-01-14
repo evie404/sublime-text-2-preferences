@@ -1,5 +1,40 @@
 {
+	"auto_upgrade_last_run": null,
+	"bootstrapped": true,
 	"in_process_packages":
 	[
+		"CoffeeScript",
+		"Tag"
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"All Autocomplete",
+		"CoffeeScript",
+		"DetectSyntax",
+		"Dockerfile Syntax Highlighting",
+		"Expand Selection to Quotes",
+		"Git",
+		"GitGutter",
+		"JSX",
+		"LESS",
+		"Liquid",
+		"Markdown Preview",
+		"nginx",
+		"Package Control",
+		"Pretty JSON",
+		"RailsGoToSpec",
+		"Revert All Files",
+		"RSpec",
+		"Ruby Hash Converter",
+		"RubyTest",
+		"Sass",
+		"SCSS",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"Tag",
+		"Theme - Soda",
+		"Toggle Symbol to String",
+		"TrailingSpaces"
 	]
 }
