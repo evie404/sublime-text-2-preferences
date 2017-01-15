@@ -3,13 +3,11 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
-		"CoffeeScript"
 	],
 	"installed_packages":
 	[
 		"Alignment",
 		"All Autocomplete",
-		"CoffeeScript",
 		"DetectSyntax",
 		"Dockerfile Syntax Highlighting",
 		"Expand Selection to Quotes",
