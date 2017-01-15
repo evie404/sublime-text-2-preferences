@@ -75,6 +75,7 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
+		"CoffeeScript",
 		"RubyTest",
 		"Vintage"
 	],
